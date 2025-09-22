@@ -1,0 +1,197 @@
+.category-options {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  text-align: center;
+}
+
+.category-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.category-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    0 0 0 4px rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* Active state for selected category */
+.category-card.active {
+  transform: translateY(-8px) scale(1.05);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+.category-card.active::before {
+  opacity: 1;
+}
+
+.colored-card.active {
+  border-color: rgba(255, 107, 107, 0.8);
+  box-shadow: 
+    0 20px 50px rgba(255, 107, 107, 0.3),
+    0 0 0 4px rgba(255, 107, 107, 0.2);
+}
+
+.inked-card.active {
+  border-color: rgba(99, 110, 114, 0.8);
+  box-shadow: 
+    0 20px 50px rgba(99, 110, 114, 0.3),
+    0 0 0 4px rgba(99, 110, 114, 0.2);
+}
+
+.category-card:hover::before {
+  opacity: 1;
+  animation: shimmerEffect 0.6s ease-out;
+}
+
+@keyframes shimmerEffect {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.colored-card:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 159, 67, 0.1));
+}
+
+.inked-card:hover {
+  background: linear-gradient(135deg, rgba(99, 110, 114, 0.1), rgba(45, 52, 54, 0.1));
+}
+
+.category-icon {
+  margin-bottom: 1.5rem;
+  color: #667eea;
+  display: flex;
+  justify-content: center;
+}
+
+.colored-card .category-icon {
+  color: #ff6b6b;
+}
+
+.inked-card .category-icon {
+  color: #636e72;
+}
+
+.category-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.category-card p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.artwork-count {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: auto;
+}
+
+.colored-card .artwork-count {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
+}
+
+.inked-card .artwork-count {
+  background: rgba(99, 110, 114, 0.1);
+  color: #636e72;
+}
+
+/* Category Actions */
+.category-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.clear-filter-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.clear-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .category-title {
+    font-size: 2rem;
+  }
+  
+  .category-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .category-card {
+    padding: 2rem 1.5rem;
+  }
+}

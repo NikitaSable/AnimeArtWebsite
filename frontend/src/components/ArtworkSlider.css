@@ -1,0 +1,238 @@
+.artwork-slider {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slider-wrapper {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.artwork-card {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.artwork-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image display options - choose the one that works best for your artwork */
+
+/* Updated: Cover mode to fill container without white space */
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+/* Fine-tune positioning for specific images */
+.artwork-image[alt*="Sakura"] {
+  object-position: center 65%;
+}
+
+.artwork-image[alt*="Naruto"] {
+  object-position: center 40%;
+}
+
+.artwork-image[alt*="Hinata"] {
+  object-position: center 45%;
+}
+
+.artwork-image[alt*="Tanjiro"] {
+  object-position: center 35%;
+}
+
+.artwork-image[alt*="Kanao"] {
+  object-position: center 40%;
+}
+
+/* Alternative positioning options - uncomment to use */
+/*
+.artwork-image {
+  object-position: center top;     // Top alignment
+  object-position: center center;  // Center alignment (default)
+  object-position: center bottom;  // Bottom alignment
+  object-position: center 30%;     // 30% from top
+  object-position: center 70%;     // 70% from top (lower)
+}
+*/
+
+/* Option 2: Contain - shows full image, may have empty space */
+/* 
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+*/
+
+/* Option 3: Fill - stretches image to fit (may distort) */
+/*
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transition: transform 0.3s ease;
+}
+*/
+
+/* Option 4: Scale-down - like contain but won't make image larger */
+/*
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+*/
+
+.artwork-image:hover {
+  transform: scale(1.05);
+}
+
+.artwork-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #f0f2f5, #e1e8ed);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.artwork-image-placeholder p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.artwork-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.artwork-card:hover .artwork-overlay {
+  transform: translateY(0);
+}
+
+.artwork-overlay h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.artwork-category {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-transform: capitalize;
+}
+
+.artwork-price {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4ecdc4;
+}
+
+.slider-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slider-btn:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    flex-direction: column;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .artwork-card {
+    height: 300px;
+  }
+}
